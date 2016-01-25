@@ -1,6 +1,6 @@
 {
   "name": "ndarray-chunked-heatmap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Renders large ndarray into chunked canvases",
   "main": "dist/ndarray-chunked-heatmap.js",
   "scripts": {
