@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ndarray-heatmap demo</title>
+    <style>
+      div {
+        width: 150px;
+      }
+      canvas {
+        float: left;
+        display: block;
+        opacity: 0.5;
+      }
+      canvas:hover {
+        opacity: 1.0;
+      }
+    </style>
+    <script src="dist/ndarray-chunked-heatmap.min.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+        var div = document.createElement('div');
+        document.body.appendChild(div);
+
+        var shape = [200, 150];
+        var data = new Array(shape[0]);
+        for(var i = 0; i < shape[0]; ++i) {
+            data[i] = new Array(shape[1]);
+            for(var j = 0; j < shape[1]; ++j) {
+                data[i][j] = i * shape[1] + j;
+            }
+        }
+
+        var chunkShape = [30, 20];
+        var renderer = cheatmap.cheatmap()
+            .data(data)
+            .chunkShape(chunkShape)
+            .colorRange(['white', 'red']);
+
+        var canvases = renderer();
+        for(var i = 0; i < canvases.length; ++i) {
+            for(var j = 0; j < canvases[i].length; ++j) {
+                div.appendChild(canvases[i][j]);
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+</body>
+</html>
